@@ -21,7 +21,7 @@ dnl  CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 dnl
 dnl Process this file with autoconf to create configure.
 
-AC_PREREQ([2.57])
+AC_PREREQ([2.60])
 AC_INIT([font-ibm-type1], [1.0.3],
         [https://gitlab.freedesktop.org/xorg/font/ibm-type1/issues],
         [font-ibm-type1])
