@@ -25,7 +25,7 @@ AC_PREREQ([2.57])
 AC_INIT([font-ibm-type1], [1.0.3],
         [https://gitlab.freedesktop.org/xorg/font/ibm-type1/issues],
         [font-ibm-type1])
-AM_INIT_AUTOMAKE([foreign dist-bzip2])
+AM_INIT_AUTOMAKE([foreign dist-xz])
 
 # Require xorg-macros: XORG_DEFAULT_OPTIONS
 m4_ifndef([XORG_MACROS_VERSION],
