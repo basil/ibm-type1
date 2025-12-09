@@ -1,0 +1,42 @@
+---
+name: Sync with upstream
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.repository_owner == 'basil'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: master
+
+      - name: Configure Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://gitlab.freedesktop.org/xorg/font/ibm-type1.git
+          git fetch --tags upstream master
+
+      - name: Rebase onto upstream
+        run: |
+          git checkout master
+          git rebase upstream/master
+
+      - name: Push rebased branch
+        run: |
+          git push --force-with-lease origin master
